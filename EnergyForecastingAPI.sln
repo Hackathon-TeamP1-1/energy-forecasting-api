@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35818.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnergyForecastingAPI", "EnergyForecastingAPI\EnergyForecastingAPI.csproj", "{FFE50A87-AB22-440E-BF2F-B398372075EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFE50A87-AB22-440E-BF2F-B398372075EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFE50A87-AB22-440E-BF2F-B398372075EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFE50A87-AB22-440E-BF2F-B398372075EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFE50A87-AB22-440E-BF2F-B398372075EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A490A7EE-45CD-4670-A5A9-30E7B90EE3C3}
+	EndGlobalSection
+EndGlobal

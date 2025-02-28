@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "6o7M4+xLJOhc1+oqK/hKFK1/XCi9Uz0Ns8Ow2fr/3hE=",
+  "Source": "EnergyForecastingAPI",
+  "BasePath": "_content/EnergyForecastingAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
