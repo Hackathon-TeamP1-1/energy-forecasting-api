@@ -42,8 +42,11 @@ namespace EnergyForecastingAPI.Controllers
             };
 
             await _userService.CreateUserAsync(user);
-            return Ok(new { Message = "User registered successfully" });
+
+            // ✅ Return 201 Created with a location header (optional)
+            return CreatedAtAction(nameof(Signup), new { id = user.Id }, new { Message = "User registered successfully" });
         }
+
 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] UserLoginDto loginDto)

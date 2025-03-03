@@ -141,6 +141,7 @@ C:\Users\yazan\source\repos\EnergyForecastingAPI\EnergyForecastingAPI\obj\Debug\
 C:\Users\yazan\source\repos\EnergyForecastingAPI\EnergyForecastingAPI\obj\Debug\net9.0\EnergyForecastingAPI.csproj.CoreCompileInputs.cache
 C:\Users\yazan\source\repos\EnergyForecastingAPI\EnergyForecastingAPI\obj\Debug\net9.0\EnergyForecastingAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\yazan\source\repos\EnergyForecastingAPI\EnergyForecastingAPI\obj\Debug\net9.0\EnergyForecastingAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\yazan\source\repos\EnergyForecastingAPI\EnergyForecastingAPI\obj\Debug\net9.0\EnergyForecastingAPI.sourcelink.json
 C:\Users\yazan\source\repos\EnergyForecastingAPI\EnergyForecastingAPI\obj\Debug\net9.0\scopedcss\bundle\EnergyForecastingAPI.styles.css
 C:\Users\yazan\source\repos\EnergyForecastingAPI\EnergyForecastingAPI\obj\Debug\net9.0\staticwebassets.build.json
 C:\Users\yazan\source\repos\EnergyForecastingAPI\EnergyForecastingAPI\obj\Debug\net9.0\staticwebassets.development.json

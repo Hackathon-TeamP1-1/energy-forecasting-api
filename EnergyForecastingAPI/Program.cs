@@ -14,7 +14,6 @@ var configuration = builder.Configuration;
 
 // ✅ Ensure SQL Server Connection Exists
 var connectionString = configuration.GetConnectionString("DefaultConnection");
-
 if (string.IsNullOrWhiteSpace(connectionString))
 {
     throw new InvalidOperationException("❌ SQL Server ConnectionString is missing in configuration.");
@@ -38,13 +37,13 @@ if (string.IsNullOrWhiteSpace(secretKey) || string.IsNullOrWhiteSpace(issuer) ||
     throw new InvalidOperationException("❌ JWT Settings are missing in configuration.");
 }
 
-// ✅ Configure JWT Authentication
+// ✅ Configure JWT Authentication with Debug Logs
 var keyBytes = Encoding.UTF8.GetBytes(secretKey);
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
-        options.RequireHttpsMetadata = false;
+        options.RequireHttpsMetadata = false; // Allow HTTP for local dev
         options.SaveToken = true;
         options.TokenValidationParameters = new TokenValidationParameters
         {
@@ -56,7 +55,29 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidAudience = audience,
             IssuerSigningKey = new SymmetricSecurityKey(keyBytes)
         };
+        options.Events = new JwtBearerEvents
+        {
+            OnAuthenticationFailed = context =>
+            {
+                Console.WriteLine($"❌ JWT Authentication Failed: {context.Exception.Message}");
+                return Task.CompletedTask;
+            },
+            OnTokenValidated = context =>
+            {
+                Console.WriteLine($"✅ JWT Token Validated: {context.SecurityToken}");
+                return Task.CompletedTask;
+            }
+        };
     });
+
+// ✅ Enable CORS (Allow All Origins for Development)
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins",
+        policy => policy.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader());
+});
 
 // ✅ Register Controllers & Swagger
 builder.Services.AddControllers();
@@ -94,8 +115,11 @@ builder.Services.AddSwaggerGen(options =>
 
 var app = builder.Build();
 
-// ✅ Middleware
-app.UseRouting();
+// ✅ Correct Middleware Order
+app.UseRouting(); // Routing must come first
+app.UseCors("AllowAllOrigins"); // CORS must be before authentication
+app.UseAuthentication();
+app.UseAuthorization();
 
 if (app.Environment.IsDevelopment())
 {
@@ -103,12 +127,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Energy Forecasting API v1");
-        c.RoutePrefix = "";
+        c.RoutePrefix = ""; // Makes Swagger available at root URL
     });
 }
 
-app.UseAuthentication();
-app.UseAuthorization();
+app.UseHttpsRedirection();
 app.MapControllers();
 
 app.Run();
